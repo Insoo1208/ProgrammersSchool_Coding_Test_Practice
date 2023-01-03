@@ -25,11 +25,58 @@ s는 영어 소문자로만 이루어져 있습니다.
   function solution(s) {
     let answer = 0;
     let arr = [...s];
-    
+    let target;
+    let comp;
+    let targetcnt = 0;
+    let compcnt = 0;
+    console.log('index targetcnt compcnt answer');
+    for (let index = 0; index < arr.length; index++) {
+      if (targetcnt === 0) {
+        target = arr[index];
+        targetcnt++;
+        if ((targetcnt > compcnt) && (index + 1 === arr.length)){
+        answer++;
+      }
+        continue;
+      }
+
+      comp = arr[index];
+      if (target === comp) {
+        targetcnt++;
+      } else {
+        compcnt++;
+      }
+
+      if ((targetcnt > compcnt) && (index + 1 === arr.length)){
+        answer++;
+      }
+
+      if (targetcnt === compcnt){
+        answer++;
+        targetcnt = 0;
+        compcnt = 0;
+      }
+    }
+
     return answer;
   }
 
-  console.log(solution("aaabbaccccabba"));
+  console.log(solution("abracadabra"));
+
+  // function solution(s, count=0) {
+  //   if(!s) return count
+  //   let [first, ...rest] = s.split("")
+  //   let countSame = 1
+  //   let countInSame = 0
+  //   let i=0
+  //   for(; i<rest.length; i++){
+  //       if(rest[i] === first) countSame++
+  //       else countInSame++
+  //       if(countSame === countInSame) break
+  //   }
+  //   return solution(rest.slice(i+1).join(""), count+1)
+  // }
+
 </script>
 </body>
 </html>
