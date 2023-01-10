@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta characterset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>19_약수의 개수와 덧셈</title>
+</head>
+<body>
+<!-- 문제설명
+두 정수 left와 right가 매개변수로 주어집니다. left부터 right까지의 모든 수들 중에서, 약수의 개수가 짝수인 수는 더하고, 약수의 개수가 홀수인 수는 뺀 수를 return 하도록 solution 함수를 완성해주세요.
+-->
+<!-- 제한사항
+1 ≤ left ≤ right ≤ 1,000
+-->
+<script>
+  function solution(left, right) {
+    var answer = 0;
+    for (let index = left; index <= right; index++) {
+      Number.isInteger(Math.sqrt(index)) ? answer -= index : answer += index;
+    }
+    return answer;
+  }
+
+  console.log(solution(13, 17));
+</script>
+</body>
+</html>
